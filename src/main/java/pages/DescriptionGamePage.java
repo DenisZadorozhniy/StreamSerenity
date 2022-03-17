@@ -3,6 +3,7 @@ package pages;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.ConversionUtils;
 import utils.StringUtils;
 
 public class DescriptionGamePage extends PageObject {
@@ -14,25 +15,16 @@ public class DescriptionGamePage extends PageObject {
     @FindBy(xpath = "//a[contains(@class,'header_installsteam_btn_content')]")
     private WebElement installSteamBtn;
 
-    public boolean checkPriceAndDiscount(String discountActionPage, String priceActionPage){
-        String discountStr  = discount.getText();
-        String priceStr  = price.getText();
-        Double price  = conversionToDoubleValue(priceStr,"₴");
-        Double priceAction  = conversionToDoubleValue(priceActionPage,"₴");
-
-        return discountActionPage.equals(discountStr) && price.equals(priceAction);
+    public Double getPrice() {
+        String priceStr = price.getText();
+        return ConversionUtils.conversionToDoubleValue(priceStr, "₴");
     }
 
-    private Double conversionToDoubleValue(String msg, String character) {
-        String str = StringUtils.removeCharacters(msg,character);
-        if(str.contains(",")){
-            String updateStr = StringUtils.replaceСharacter(str,",",".");
-            return Double.valueOf(updateStr);
-        }
-       return Double.valueOf(str);
+    public String getDiscount() {
+        return discount.getText();
     }
 
-    public void clickInstallSteamBtn(){
+    public void clickInstallSteamBtn() {
         installSteamBtn.click();
     }
 }

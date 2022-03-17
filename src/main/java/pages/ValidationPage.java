@@ -10,14 +10,14 @@ public class ValidationPage extends PageObject {
     private WebElement checkBirthday;
     @FindBy(xpath = "//select[contains(@id,'ageYear')]")
     private WebElement ageBtn;
-    @FindBy(xpath = "//option[contains(@value,'"+2003+"')]")
+    @FindBy(xpath = "//option[contains(@value,'" + 2003 + "')]")
     private WebElement ageOption;
     @FindBy(xpath = "//a[contains(@id,'view_product_page_btn')]")
     private WebElement openPageBtn;
 
-    public Boolean checkValidationPageIsDisplay(){
+    public Boolean checkValidationPageIsDisplay() {
         try {
-            if(ageBtn.isDisplayed()){
+            if (ageBtn.isDisplayed()) {
                 ageBtn.click();
                 ageOption.click();
                 openPageBtn.click();

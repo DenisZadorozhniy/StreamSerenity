@@ -13,7 +13,7 @@ public class MainStreamPage extends PageObject {
     @FindBy(xpath = "//div[contains(@id,'genre_tab')]")
     private WebElement categoryBtn;
 
-    public void openActionPage(){
+    public void openActionPage() {
         categoryBtn.click();
         actionBtn.click();
     }

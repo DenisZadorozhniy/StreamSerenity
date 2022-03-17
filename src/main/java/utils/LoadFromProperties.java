@@ -15,8 +15,6 @@ public class LoadFromProperties {
         try (FileInputStream fileProperties = new FileInputStream(path)) {
             properties = new Properties();
             properties.load(fileProperties);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

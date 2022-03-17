@@ -9,14 +9,16 @@ import utils.LoadFromProperties;
 public class DownloadSteamPage extends PageObject {
     @FindBy(xpath = "//div[contains(@id,'about_greeting')]//a[contains(@class,'about_install_steam_link')]")
     private WebElement downloadSteamBtn;
-    private String pathToSteam = LoadFromProperties.getProperties("pathToSteam");
 
-    public boolean checkDownloadFile(){
-        String downloadLink = downloadSteamBtn.getAttribute("href");
-        FileUtils.saveFileOnDisk(downloadLink,pathToSteam);
-        return downloadSteamBtn.isEnabled() && FileUtils.checkFileУExists(pathToSteam);
+    public String getAttributeDownloadSteamBtn() {
+        return downloadSteamBtn.getAttribute("href");
     }
-    public void deleteSteam(){
-        FileUtils.deleteFile(pathToSteam);
+
+    public void saveFile(String downloadLink, String pathToSteam) {
+        FileUtils.saveFileOnDisk(downloadLink, pathToSteam);
+    }
+
+    public boolean checkDownloadFile(String pathToSteam) {
+        return downloadSteamBtn.isEnabled() && FileUtils.checkFileExists(pathToSteam);
     }
 }

@@ -1,7 +1,10 @@
+import io.cucumber.java.eo.Do;
 import net.serenitybdd.core.steps.UIInteractions;
 import net.thucydides.core.annotations.Step;
 import org.junit.Assert;
 import pages.*;
+import utils.ConversionUtils;
+import utils.LoadFromProperties;
 
 public class TestSteps extends UIInteractions {
 
@@ -12,40 +15,53 @@ public class TestSteps extends UIInteractions {
     private DownloadSteamPage downloadSteamPage;
     private String discountGame;
     private String priceGame;
+    private String pathToSteam = LoadFromProperties.getProperties("pathToSteam");
 
-    @Step("Open main steam page and open action page")
-    public void openActionPage() {
+    @Step("Open main steam page")
+    public void openSite() {
         mainStreamPage.open();
+    }
+
+    @Step("Open action page")
+    public void openActionPage() {
         mainStreamPage.openActionPage();
     }
 
     @Step("Go to the Top Sellers tab")
-    public void clickTopSellers(){
+    public void clickTopSellers() {
         actionPage.clickTopSellersBtn();
     }
 
     @Step("Search for the maximum discount on the game")
-    public void getMostDiscount(){
+    public void getMostDiscount() {
         discountGame = actionPage.getMostDiscounts();
         priceGame = actionPage.getPrice();
         actionPage.clickMostDiscountGame();
+
+    }
+
+    @Step("Check validation page")
+    public void checkValidationPage() {
         validationPage.checkValidationPageIsDisplay();
     }
 
     @Step("Check discount and price")
-    public void checkDiscountAndPrice(){
-        boolean checkPriceAndDiscount = gamePage.checkPriceAndDiscount(discountGame, priceGame);
-        Assert.assertTrue("Value is not the same",checkPriceAndDiscount);
+    public void checkDiscountAndPrice() {
+        Double price = gamePage.getPrice();
+        String discount = gamePage.getDiscount();
+        Assert.assertEquals(discount, discountGame);
+        Assert.assertEquals(price, ConversionUtils.conversionToDoubleValue(priceGame, "₴"));
     }
 
     @Step("Click the install button")
-    public void clickInstallSteam(){
+    public void clickInstallSteam() {
         gamePage.clickInstallSteamBtn();
     }
 
     @Step("Download and delete steam")
-    public void downloadSteam(){
-        Assert.assertTrue("Steam is not download",downloadSteamPage.checkDownloadFile());
-        downloadSteamPage.deleteSteam();
+    public void downloadSteam() {
+        String downloadLink = downloadSteamPage.getAttributeDownloadSteamBtn();
+        downloadSteamPage.saveFile(downloadLink, pathToSteam);
+        Assert.assertTrue("Steam is not download", downloadSteamPage.checkDownloadFile(pathToSteam));
     }
 }

@@ -4,15 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(SerenityJUnit5Extension.class)
-public class TestSite {
+public class TestSite extends BaseTest {
     @Steps
     private TestSteps testSteps;
 
     @Test
-    public void steamSiteTest(){
+    public void steamSiteTest() {
+        testSteps.openSite();
         testSteps.openActionPage();
         testSteps.clickTopSellers();
         testSteps.getMostDiscount();
+        testSteps.checkValidationPage();
         testSteps.checkDiscountAndPrice();
         testSteps.clickInstallSteam();
         testSteps.downloadSteam();

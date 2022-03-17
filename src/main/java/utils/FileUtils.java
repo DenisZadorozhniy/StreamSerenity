@@ -5,12 +5,14 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
+
 import java.io.File;
 import java.io.IOException;
+
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class FileUtils {
-    public static void saveFileOnDisk(String downloadLink, String path){
+    public static void saveFileOnDisk(String downloadLink, String path) {
         File fileToSave = new File(path);
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -25,12 +27,12 @@ public class FileUtils {
         }
     }
 
-    public static boolean checkFileУExists(String path){
+    public static boolean checkFileExists(String path) {
         File file = new File(path);
         return file.exists();
     }
 
-    public static void deleteFile(String path){
+    public static void deleteFile(String path) {
         File file = new File(path);
         file.delete();
     }
