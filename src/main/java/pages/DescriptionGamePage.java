@@ -17,7 +17,7 @@ public class DescriptionGamePage extends PageObject {
 
     public Double getPrice() {
         String priceStr = price.getText();
-        return ConversionUtils.conversionToDoubleValue(priceStr, "₴");
+        return ConversionUtils.conversionToDoubleValue(priceStr);
     }
 
     public String getDiscount() {

@@ -15,7 +15,7 @@ public class ValidationPage extends PageObject {
     @FindBy(xpath = "//a[contains(@id,'view_product_page_btn')]")
     private WebElement openPageBtn;
 
-    public Boolean checkValidationPageIsDisplay() {
+    public Boolean IsDisplayValidationPage() {
         try {
             if (ageBtn.isDisplayed()) {
                 ageBtn.click();

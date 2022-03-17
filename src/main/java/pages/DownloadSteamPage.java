@@ -14,11 +14,4 @@ public class DownloadSteamPage extends PageObject {
         return downloadSteamBtn.getAttribute("href");
     }
 
-    public void saveFile(String downloadLink, String pathToSteam) {
-        FileUtils.saveFileOnDisk(downloadLink, pathToSteam);
-    }
-
-    public boolean checkDownloadFile(String pathToSteam) {
-        return downloadSteamBtn.isEnabled() && FileUtils.checkFileExists(pathToSteam);
-    }
 }

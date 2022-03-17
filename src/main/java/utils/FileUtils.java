@@ -27,7 +27,7 @@ public class FileUtils {
         }
     }
 
-    public static boolean checkFileExists(String path) {
+    public static boolean isFileExists(String path) {
         File file = new File(path);
         return file.exists();
     }
@@ -35,5 +35,13 @@ public class FileUtils {
     public static void deleteFile(String path) {
         File file = new File(path);
         file.delete();
+    }
+
+    public static void saveFile(String downloadLink, String pathToSteam) {
+        FileUtils.saveFileOnDisk(downloadLink, pathToSteam);
+    }
+
+    public static boolean isDownloadFile(String pathToSteam) {
+        return FileUtils.isFileExists(pathToSteam);
     }
 }

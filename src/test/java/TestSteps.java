@@ -4,6 +4,7 @@ import net.thucydides.core.annotations.Step;
 import org.junit.Assert;
 import pages.*;
 import utils.ConversionUtils;
+import utils.FileUtils;
 import utils.LoadFromProperties;
 
 public class TestSteps extends UIInteractions {
@@ -42,7 +43,7 @@ public class TestSteps extends UIInteractions {
 
     @Step("Check validation page")
     public void checkValidationPage() {
-        validationPage.checkValidationPageIsDisplay();
+        validationPage.IsDisplayValidationPage();
     }
 
     @Step("Check discount and price")
@@ -50,7 +51,7 @@ public class TestSteps extends UIInteractions {
         Double price = gamePage.getPrice();
         String discount = gamePage.getDiscount();
         Assert.assertEquals(discount, discountGame);
-        Assert.assertEquals(price, ConversionUtils.conversionToDoubleValue(priceGame, "₴"));
+        Assert.assertEquals(price, ConversionUtils.conversionToDoubleValue(priceGame));
     }
 
     @Step("Click the install button")
@@ -61,7 +62,7 @@ public class TestSteps extends UIInteractions {
     @Step("Download and delete steam")
     public void downloadSteam() {
         String downloadLink = downloadSteamPage.getAttributeDownloadSteamBtn();
-        downloadSteamPage.saveFile(downloadLink, pathToSteam);
-        Assert.assertTrue("Steam is not download", downloadSteamPage.checkDownloadFile(pathToSteam));
+        FileUtils.saveFile(downloadLink, pathToSteam);
+        Assert.assertTrue("Steam is not download", FileUtils.isDownloadFile(pathToSteam));
     }
 }
