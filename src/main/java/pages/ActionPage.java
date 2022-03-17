@@ -17,11 +17,11 @@ public class ActionPage extends PageObject {
     private final String DISCOUNT_PATH = "//div[contains(@id,'TopSellersTable')]//div[contains(@Class,'discount_pct')] ";
     @FindBy(id = "tab_select_TopSellers")
     private WebElement topSellersBtn;
-    @FindBy(xpath = "" + DISCOUNT_PATH + "//..//..//div[contains(@class,'tab_item_name')]")
+    @FindBy(xpath = DISCOUNT_PATH + "//..//..//div[contains(@class,'tab_item_name')]")
     private List<WebElement> titleGames;
-    @FindBy(xpath = "" + DISCOUNT_PATH + "")
+    @FindBy(xpath = DISCOUNT_PATH)
     private List<WebElement> discountGames;
-    @FindBy(xpath = "" + DISCOUNT_PATH + "//..//..//div[contains(@class,'discount_final_price')]")
+    @FindBy(xpath = DISCOUNT_PATH + "//..//..//div[contains(@class,'discount_final_price')]")
     private List<WebElement> priceGames;
     private List<Game> sortedList;
     private List<Game> gameList = new ArrayList<>();
