@@ -43,7 +43,7 @@ public class TestSteps extends UIInteractions {
 
     @Step("Check validation page")
     public void checkValidationPage() {
-        validationPage.IsDisplayValidationPage();
+        validationPage.isDisplayValidationPage();
     }
 
     @Step("Check discount and price")
@@ -51,7 +51,7 @@ public class TestSteps extends UIInteractions {
         Double price = gamePage.getPrice();
         String discount = gamePage.getDiscount();
         Assert.assertEquals(discount, discountGame);
-        Assert.assertEquals(price, ConversionUtils.conversionToDoubleValue(priceGame));
+        Assert.assertEquals(price, ConversionUtils.conversionToDoubleValue(priceGame,"\\d{1,4}"));
     }
 
     @Step("Click the install button")

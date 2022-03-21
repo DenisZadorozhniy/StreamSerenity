@@ -2,12 +2,8 @@ package utils;
 
 public class ConversionUtils {
 
-    public static Double conversionToDoubleValue(String msg) {
-        String str = StringUtils.getOnlyNumbers(msg);
-        if (str.contains(",")) {
-            String updateStr = StringUtils.replaceСharacter(str, ",", ".");
-            return Double.valueOf(updateStr);
-        }
+    public static Double conversionToDoubleValue(String msg,String regex) {
+        String str = StringUtils.getOnlyNumbers(msg,regex);
         return Double.valueOf(str);
     }
 }

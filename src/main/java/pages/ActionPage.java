@@ -2,6 +2,7 @@ package pages;
 
 import models.Game;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,13 +17,13 @@ public class ActionPage extends PageObject {
 
     private final String DISCOUNT_PATH = "//div[contains(@id,'TopSellersTable')]//div[contains(@Class,'discount_pct')] ";
     @FindBy(id = "tab_select_TopSellers")
-    private WebElement topSellersBtn;
+    private WebElementFacade topSellersBtn;
     @FindBy(xpath = DISCOUNT_PATH + "//..//..//div[contains(@class,'tab_item_name')]")
-    private List<WebElement> titleGames;
+    private List<WebElementFacade> titleGames;
     @FindBy(xpath = DISCOUNT_PATH)
-    private List<WebElement> discountGames;
+    private List<WebElementFacade> discountGames;
     @FindBy(xpath = DISCOUNT_PATH + "//..//..//div[contains(@class,'discount_final_price')]")
-    private List<WebElement> priceGames;
+    private List<WebElementFacade> priceGames;
     private List<Game> sortedList;
     private List<Game> gameList = new ArrayList<>();
 
