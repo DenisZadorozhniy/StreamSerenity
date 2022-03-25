@@ -35,7 +35,7 @@ public class TestSteps extends UIInteractions {
 
     @Step("Search for the maximum discount on the game")
     public void getMostDiscount() {
-        discountGame = actionPage.getMostDiscounts();
+        discountGame = actionPage.getMostDiscount();
         priceGame = actionPage.getPrice();
         actionPage.clickMostDiscountGame();
 
@@ -51,7 +51,8 @@ public class TestSteps extends UIInteractions {
         Double price = gamePage.getPrice();
         String discount = gamePage.getDiscount();
         Assert.assertEquals(discount, discountGame);
-        Assert.assertEquals(price, ConversionUtils.conversionToDoubleValue(priceGame,"\\d{1,4}"));
+        String regaxStr = "\\d{1,4}";
+        Assert.assertEquals(price, ConversionUtils.conversionToDoubleValue(priceGame,regaxStr));
     }
 
     @Step("Click the install button")

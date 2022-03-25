@@ -32,7 +32,7 @@ public class ActionPage extends PageObject {
         topSellersBtn.click();
     }
 
-    public String getMostDiscounts() {
+    public String getMostDiscount() {
         for (int i = 0; i < discountGames.size(); i++) {
             Game game = new Game(titleGames.get(i).getText(), discountGames.get(i).getText(), priceGames.get(i).getText());
             gameList.add(game);

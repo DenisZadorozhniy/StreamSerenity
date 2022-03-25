@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class StringUtils {
 
-    public static String getOnlyNumbers(String str,String regex) {
+    public static String getData(String str,String regex) {
         Matcher matcher = Pattern.compile(regex).matcher(str);
         if (matcher.find()) {
             return matcher.group();

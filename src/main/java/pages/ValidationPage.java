@@ -11,8 +11,6 @@ public class ValidationPage extends PageObject {
     private WebElementFacade checkBirthday;
     @FindBy(xpath = "//select[contains(@id,'ageYear')]")
     private WebElementFacade ageBtn;
-    @FindBy(xpath = "//option[contains(@value,'" + 2003 + "')]")
-    private WebElementFacade ageOption;
     @FindBy(xpath = "//a[contains(@id,'view_product_page_btn')]")
     private WebElementFacade openPageBtn;
 
@@ -20,7 +18,7 @@ public class ValidationPage extends PageObject {
         try {
             if (ageBtn.isDisplayed()) {
                 ageBtn.click();
-                ageOption.click();
+                ageBtn.selectByValue("2003");
                 openPageBtn.click();
             } else {
                 openPageBtn.click();
